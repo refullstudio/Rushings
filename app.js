@@ -1,10 +1,15 @@
 let path = window.location.hash.replace("#","") || "/";
 
 fetch("https://api.rushings.xyz/page" + path)
-.then(r => r.text())
+.then(response => response.text())
 .then(html => {
-    document.body.innerHTML = html;
+
+    document.getElementById("app").innerHTML = html;
+
 })
-.catch(() => {
-    document.body.innerHTML = "Failed loading page";
+.catch(error => {
+
+    document.getElementById("app").innerHTML =
+    "Failed loading page";
+
 });
